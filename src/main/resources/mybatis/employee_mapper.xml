@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.visit.program.ReservationProgram.domain.repository.EmployeeRepository">
+
+    <select id = "findAll" resultType="com.visit.program.ReservationProgram.domain.dao.Employee">
+        select * from employee
+    </select>
+
+    <insert id="saveEmployee" parameterType="com.visit.program.ReservationProgram.domain.dao.Employee" useGeneratedKeys="true" keyProperty="id">
+        insert into employee(loginId, employee_name, part_name,phone_number) values(#{loginId},#{employee_name},#{part_name},#{phone_number})
+    </insert>
+
+    <select id = "loginMember" resultType="java.lang.Long">
+        select id from employee where loginId = #{loginId} and password  = #{password}
+    </select>
+
+    <select id = "findById" resultType="com.visit.program.ReservationProgram.domain.dao.Employee">
+        select * from employee where id = #{id}
+    </select>
+
+    <select id = "findByName" resultType="java.lang.String">
+        select employee_name from employee where id = #{id}
+    </select>
+    <select id="updateAdmin">
+        update employee set is_admin=true where id = #{id}
+    </select>
+
+    <select id="updatePassword">
+        update employee set password=#{password} where id = #{id}
+    </select>
+
+    <select id="findByLoginId" resultType="com.visit.program.ReservationProgram.domain.dao.Employee">
+        select id, employee_name, loginId, phone_number,part_name from employee where loginId = #{loginId}
+    </select>
+
+    <select id = "findAllDTO" resultType="com.visit.program.ReservationProgram.domain.dao.EmployeeToAdmin" parameterType="com.visit.program.ReservationProgram.domain.dto.UpdateEmployeeDTO">
+        select id, loginId, password, employee_name,part_name, is_admin from employee
+        <where>
+            <if test="employee_name!=null and employee_name!=''">
+                and employee_name like concat('%',#{employee_name},'%')
+            </if>
+            <if test="part_name!=null and part_name!=''">
+                and part_name like concat('%',#{part_name},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>
