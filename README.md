@@ -7,7 +7,7 @@
 ### 대상 : 석식 이용을 희망하는 전 직원
 
 ### PROCESS 
-<img src="https://github.com/Kohaneul/DinnerProgram/assets/96707563/c6c8853f-3f1a-4ba9-85a9-64ac6a8bb39b.png" width="55%">
+![image](https://github.com/Kohaneul/DininerProgram/assets/96707563/c084469e-e62a-43ee-b2ad-6421574b24ab)
 
 ### 개발 환경
 `Java11, SpringBoot, Gradle, AJAX, MySQL, JavaScript, MyBatis, HTML, CSS, Thymeleaf, LINUX CENTOS 7`
